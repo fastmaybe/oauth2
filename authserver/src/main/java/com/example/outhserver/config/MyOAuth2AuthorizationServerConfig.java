@@ -67,7 +67,7 @@ public class MyOAuth2AuthorizationServerConfig extends AuthorizationServerConfig
        clients
                .inMemory()
                .withClient("clientapp").secret("112233") // <4.2> Client 账号、密码。
-               .authorizedGrantTypes("password") // <4.2> 密码模式
+               .authorizedGrantTypes("password","refresh_token") // <4.2> 密码模式
                .scopes("read_userinfo", "read_contacts") // <4.2> 可授权的 Scope
                 .redirectUris("https:www.baidu.com")
 
