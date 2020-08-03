@@ -68,8 +68,16 @@ public class MyOAuth2AuthorizationServerConfig extends AuthorizationServerConfig
                .inMemory()
                .withClient("clientapp").secret("112233") // <4.2> Client 账号、密码。
                .authorizedGrantTypes("authorization_code","refresh_token") // <4.2> code模式
+               .scopes("read_userinfo", "read_contacts","password") // <4.2> 可授权的 Scope
+                .redirectUris("http://localhost:8102/client1/login")
+                .autoApprove(true)
+
+       .and()
+               .withClient("clientapp2").secret("112233") // <4.2> Client 账号、密码。
+               .authorizedGrantTypes("authorization_code","refresh_token","password") // <4.2> code模式
                .scopes("read_userinfo", "read_contacts") // <4.2> 可授权的 Scope
-                .redirectUris("http://localhost:8102/api/callback")
+               .redirectUris("http://localhost:8103/client2/login")
+               .autoApprove(true)
 
 //                .and().withClient() // <4.3> 可以继续配置新的 Client
        ;
