@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * @Author: liulang
  * @Date: 2020/7/29 15:28
@@ -26,7 +29,7 @@ public class AuthCallbackController {
     private String accessTokenUri;
 
     @RequestMapping("callback")
-    public OAuth2AccessToken callback(@RequestParam String code){
+    public OAuth2AccessToken callback(@RequestParam String code, HttpServletResponse response) throws IOException {
         //创建 AuthorizationCodeResourceDetails 对象
         AuthorizationCodeResourceDetails resourceDetails = new AuthorizationCodeResourceDetails();
         resourceDetails.setClientId(oauth2ClientProperties.getClientId());
@@ -36,9 +39,9 @@ public class AuthCallbackController {
         // 创建 OAuth2RestTemplate 对象
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails);
         restTemplate.getOAuth2ClientContext().getAccessTokenRequest().setAuthorizationCode(code); // 设置 code
-        restTemplate.getOAuth2ClientContext().getAccessTokenRequest().setPreservedState("http://localhost:8102/api/callback"); // 通过这个方式，设置 redirect_uri 参数
+        restTemplate.getOAuth2ClientContext().getAccessTokenRequest().setPreservedState("http://www.client1.com:8102/client1/api/callback"); // 通过这个方式，设置 redirect_uri 参数
         restTemplate.setAccessTokenProvider(new AuthorizationCodeAccessTokenProvider());
-
+//        response.sendRedirect("https://www.baidu.com/");
         return restTemplate.getAccessToken();
     }
 }

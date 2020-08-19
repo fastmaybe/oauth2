@@ -1,5 +1,7 @@
 server:
   port: 8102
+  servlet:
+    context-path: /client1
 
 security:
   oauth2:
@@ -9,9 +11,9 @@ security:
       client-secret: 112233
     # OAuth2 Resource 配置，对应 ResourceServerProperties 类
     resource:
-      token-info-uri: http://127.0.0.1:8101/oauth/check_token # 获得 Token 信息的 URL
+      token-info-uri: http://www.server.com:8101/server/oauth/check_token # 获得 Token 信息的 URL
     # 访问令牌获取 URL，自定义的
-    access-token-uri: http://127.0.0.1:8101/oauth/token
+    access-token-uri: http://www.server.com:8101/server/oauth/token
 #spring:
 #  security:
 #    oauth2:
