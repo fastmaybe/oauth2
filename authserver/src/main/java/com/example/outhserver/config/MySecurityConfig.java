@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
  *
  * Spring Security 提供认证功能
  */
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
 

@@ -23,8 +23,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * 在客户端访问资源服务器时，会在请求中带上访问令牌。
  * 在资源服务器收到客户端的请求时，会使用请求中的访问令牌，找授权服务器确认该访问令牌的有效性。
  */
-@Configuration
-@EnableAuthorizationServer
+//@Configuration
+//@EnableAuthorizationServer
 public class MyOAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
